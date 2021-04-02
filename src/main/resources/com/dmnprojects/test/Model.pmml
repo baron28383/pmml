@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+<Header copyright="R.R.">
+<Application name="SIPINA" version="3.13"/>
+</Header>
+<DataDictionary numberOfFields="3">
+<DataField name="age" optype="continuous" dataType="double">
+<Interval closure="closedClosed" leftMargin="2.90000000000000E+001" rightMargin="7.70000000000000E+001"/>
+</DataField>
+<DataField name="pression" optype="continuous" dataType="double">
+<Interval closure="closedClosed" leftMargin="9.40000000000000E+001" rightMargin="2.00000000000000E+002"/>
+</DataField>
+<DataField name="coeur" optype="categorical" dataType="string">
+<Value value="presence"/>
+<Value value="absence"/>
+</DataField>
+</DataDictionary>
+<TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="multiSplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+<MiningSchema>
+<MiningField name="age" invalidValueTreatment="asIs"/>
+<MiningField name="pression" invalidValueTreatment="asIs"/>
+<MiningField name="coeur" invalidValueTreatment="asIs" usageType="target"/>
+</MiningSchema>
+<Node id="0" score="absence" recordCount="270.0">
+<True/>
+<ScoreDistribution value="presence" recordCount="120.0"/>
+<ScoreDistribution value="absence" recordCount="150.0"/>
+<Node id="1" score="absence" recordCount="132.0">
+<SimplePredicate field="age" operator="lessThan" value="5.45000000000000E+001"/>
+<ScoreDistribution value="presence" recordCount="40.0"/>
+<ScoreDistribution value="absence" recordCount="92.0"/>
+</Node>
+<Node id="2" score="presence" recordCount="138.0">
+<SimplePredicate field="age" operator="greaterOrEqual" value="5.45000000000000E+001"/>
+<ScoreDistribution value="presence" recordCount="80.0"/>
+<ScoreDistribution value="absence" recordCount="58.0"/>
+</Node>
+</Node>
+</TreeModel>
+</PMML>
